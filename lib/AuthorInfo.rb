@@ -52,4 +52,4 @@ module AuthorInfo
 end
 
 # for testing module in command line
-AuthorInfo.getInfo("William Shakespeare")
+# AuthorInfo.getInfo("William Shakespeare")
