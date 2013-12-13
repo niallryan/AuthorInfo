@@ -32,19 +32,19 @@ module AuthorInfo
 		content = result["parse"]["text"]["*"]
 		# get only summary
 		content_array = content.split("</p>")
-		summary = content_array[0].concat(content_array[1])
-		# write summary to HTML file
-		File.open("page.html", 'w') { |file| file.write(summary) }
+    stripped_content_array = []
+    content_array.each do |x|
+      # Use Regex to strip out HTML tags => Update this to use Nokogiri or something similar to parse HTML instead
+      y = x.gsub(%r{</?[^>]+?>}, '')
+      # push stripped text to new array
+      stripped_content_array.push(y)
+    end
 
-		# regex = /<p>.*<\/p>/
+    # concat first two paragraphs of response to create summary
+		summary = stripped_content_array[0].concat(stripped_content_array[1])
+		# write summary to text file
+		File.open("page.txt", 'a') { |file| file.write(summary) }
 
-		#puts content.match(regex)
-
-		# puts content_array[0]
-		# puts content_array[1]
-		# puts content_array[2]
-		# puts content_array[3]
-		# return HTML file
 		return summary
 
 	end
@@ -52,4 +52,4 @@ module AuthorInfo
 end
 
 # for testing module in command line
-# AuthorInfo.getInfo("William Shakespeare")
+AuthorInfo.getInfo("William Shakespeare")
