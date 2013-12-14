@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
 	s.name = 'AuthorInfo'
-	s.version = '0.0.0'
+	s.version = '1.0.1'
 	s.date = '2013-12-01'
 	s.summary = "Get information about an author from Wikipedia"
 	s.description = "Makes a GET request based on user input to Wikipedia API, parses response and manipulates the response data, then returns a summary."
