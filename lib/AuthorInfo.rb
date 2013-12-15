@@ -87,4 +87,4 @@ module AuthorInfo
 end
 
 # for testing module in command line
-AuthorInfo.getInfo("James Joyce")
+# AuthorInfo.getInfo("James Joyce")
