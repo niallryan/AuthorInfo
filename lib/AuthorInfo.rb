@@ -36,7 +36,9 @@ module AuthorInfo
     content_array.each do |x|
       # Use Regex to strip out HTML tags => Update this to use Nokogiri or something similar to parse HTML instead
       y = x.gsub(%r{</?[^>]+?>}, '')
-      # push stripped text to new array
+      # Add carriage returns to make text more readable
+      y = y.gsub(". ", ".\n\n")
+      # push mainpulated strings to new array
       stripped_content_array.push(y)
     end
 
@@ -45,6 +47,7 @@ module AuthorInfo
 		# write summary to text file
 		File.open("page.txt", 'a') { |file| file.write(summary) }
 
+    puts summary
 		return summary
 
 	end
@@ -52,4 +55,4 @@ module AuthorInfo
 end
 
 # for testing module in command line
-AuthorInfo.getInfo("William Shakespeare")
+# AuthorInfo.getInfo("James Joyce")
