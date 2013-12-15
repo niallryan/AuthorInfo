@@ -44,8 +44,11 @@ module AuthorInfo
 
   def self.get_summary(input)
     # get only summary
+    # create array from string
     content_array = input.split("</p>")
+    # new array for manipulated content
     stripped_content_array = []
+    # loop over array
     content_array.each do |x|
       # Use Regex to strip out HTML tags => Update this to use Nokogiri or something similar to parse HTML instead
       y = x.gsub(%r{</?[^>]+?>}, '')
@@ -57,7 +60,7 @@ module AuthorInfo
 
     # concat first two paragraphs of response to create summary
     summary = stripped_content_array[0].concat(stripped_content_array[1])
-    # write summary to text file
+    # append summary to text log file
     File.open("page.txt", 'a') { |file| file.write(summary) }
 
     return summary
@@ -78,7 +81,6 @@ module AuthorInfo
 
     summary = get_summary(content)
 
-    puts summary
     return summary
 
   end
