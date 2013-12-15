@@ -31,9 +31,8 @@ module AuthorInfo
   end
 
   def self.write_response(input)
-    # Write response to file separately as JSON and Ruby Hash
+    # Write response to file as Ruby Hash
     # Not necessary, useful to visualise data structure
-    File.open("response.json", 'w') { |file| file.write(input) }
     File.open("response.rb", 'w') { |file| file.write(input) }
   end
 
